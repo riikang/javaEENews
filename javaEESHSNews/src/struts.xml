@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+		<constant name="struts.i18n.encoding" value="utf-8"/>
+		<constant name="struts.i18n.reload" value="true"/> 
+		<constant name="struts.custom.i18n.resources" value="AddNewsAction"/>
+		<package name="shsNews" extends="struts-default" namespace="/news">			
+			<action name="*Action" class="newsAction" method="{1}">
+				<result name="add_input">/WEB-INF/News/addNews.jsp</result>
+				<result name="list">/WEB-INF/News/listNews.jsp</result>
+				<result name="remove" type="chain">listAction</result>
+				<result name="update_start">/WEB-INF/News/update.jsp</result>
+				<result name="update" type="chain">listAction</result>
+				<result name="findNews">/WEB-INF/News/findNews.jsp</result>
+				<result name="login">/WEB-INF/News/login.jsp</result>
+				<result name="search">/WEB-INF/News/searchReslut.jsp</result>
+				<result name="logout" type="redirect">/welcome.jsp</result>
+				<result name="success" type="redirect">/welcome.jsp</result>
+				<result name="singleNews">/singleNews.jsp</result>
+				<result name="new">/index.jsp</result>
+			</action>
+			<action name="start_registerAction" class="userAction" method="start">
+				<result name="start_register">/WEB-INF/News/register.jsp</result>
+			</action>
+			<action name="doing_registerAction" class="userAction" method="doing">
+				<result name="success">/WEB-INF/News/success.jsp</result>
+				<result name="input">/WEB-INF/News/register.jsp</result>
+			</action>
+			<action name="loginCheckAction" class="userAction" method="loginCheck">
+				<result name="notin">/WEB-INF/News/login.jsp</result>
+				<result name="success">/welcome.jsp</result>
+			</action>
+			<action name="addAction" class="addNewsAction" method="add" >
+				<result name="input">/WEB-INF/News/addNews.jsp</result>
+				<result name="add">/WEB-INF/News/success.jsp</result>
+			</action>
+		</package>
+</struts>    
